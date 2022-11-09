@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 const Details = () => {
-  const [details, setDetails] = useState([]);
-  useEffect(() => {
-    fetch("services.json")
-      .then((res) => res.json())
-      .then((data) => setDetails(data));
-  }, []);
+  const { title, details } = useLoaderData();
+  console.log(title);
   return (
     <div>
-      <h2>{details.length}</h2>
+      <p>{title}</p>
+      <p>Details{details}</p>
     </div>
   );
 };

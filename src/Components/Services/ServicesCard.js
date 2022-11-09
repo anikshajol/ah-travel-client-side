@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServicesCard = ({ service }) => {
-  const { img, price, placeName, details } = service;
+  const { img, price, placeName, details, _id } = service;
 
   return (
     <section className="">
@@ -25,7 +25,7 @@ const ServicesCard = ({ service }) => {
           </p>
 
           <div className="card-actions justify-end">
-            <Link to="/details">
+            <Link to={`/details/${_id}`}>
               <button className="btn btn-primary">Details</button>
             </Link>
           </div>

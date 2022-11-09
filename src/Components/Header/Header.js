@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import logo from "../../assets/logo/logo.png";
+import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -24,6 +25,9 @@ const Header = () => {
             <Link to="/service">Package</Link>
           </li>
           <li className="font-semibold">
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li className="font-semibold">
             <Link onClick={handleLogOut} to="/login">
               <button className="btn">Logout</button>
             </Link>
@@ -34,7 +38,7 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar h-20 mb-12 pt-12 bg-base-100 container mx-auto">
+    <div className="navbar bg-blue-200 h-20 mb-12 p-12 rounded-md  container mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,6 +66,9 @@ const Header = () => {
         </div>
         <Link to="/" className="">
           <img src={logo} className="h-12  rounded-full" alt="" />
+        </Link>
+        <Link to="/" className="text-2xl  ml-3 font-bold">
+          AhTravels
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
