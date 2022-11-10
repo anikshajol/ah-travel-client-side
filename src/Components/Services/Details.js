@@ -34,6 +34,7 @@ const Details = () => {
       </div>
 
       <section className="review ">
+        <h2 className="text-4xl text-orange-400 font-bold">Review</h2>
         {user && user.uid ? (
           <Review></Review>
         ) : (
