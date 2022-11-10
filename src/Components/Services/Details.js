@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
+import PostReview from "./PostReview";
 import Review from "./Review";
 
 const Details = () => {
-  const { title, details, img, tourist_places, _id } = useLoaderData();
+  const { title, details, img, tourist_places } = useLoaderData();
+  const { user } = useContext(AuthContext);
 
   return (
-    <div className="container mx-auto flex gap-12">
+    <div className="container mx-auto flex justify-center flex-col md:flex-row gap-12">
       <div className="card w-1/2 bg-base-100 shadow-xl">
         <figure>
           <img src={img} alt="Shoes" />
@@ -24,13 +27,17 @@ const Details = () => {
             ))}
           </ul>
           <ul className="text-2xl">
-            <p className="text-2xl font-semibold">Tour Package</p>
+            <p className="text-2xl font-semibold"></p>
           </ul>
         </div>
       </div>
 
       <section className="review ">
-        <Review></Review>
+        {user && user.uid ? (
+          <Review></Review>
+        ) : (
+          <h2 className="text-4xl">Please Login first for review</h2>
+        )}
       </section>
     </div>
   );

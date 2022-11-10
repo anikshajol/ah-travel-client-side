@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PostReview from "./PostReview";
 import ServicesCard from "./ServicesCard";
 
 const Services = () => {
@@ -20,6 +21,11 @@ const Services = () => {
         {services.map((service) => (
           <ServicesCard key={service._id} service={service}></ServicesCard>
         ))}
+      </div>
+      <div className="w-full carousel rounded-box">
+        <div className="carousel-item w-full">
+          <PostReview></PostReview>
+        </div>
       </div>
     </div>
   );

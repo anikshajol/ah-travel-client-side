@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PostReview from "./PostReview";
 
 const ServicesCard = ({ service }) => {
   const { img, price, placeName, details, _id } = service;
@@ -31,6 +32,7 @@ const ServicesCard = ({ service }) => {
           </div>
         </div>
       </div>
+      <div></div>
     </section>
   );
 };

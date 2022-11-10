@@ -11,12 +11,17 @@ const Review = () => {
     e.preventDefault();
     const form = e.target;
     const message = form.message.value;
+    const title = form.title.value;
     const email = user?.email || "Unregistered";
+    const name = form.name.value;
     console.log(message, email);
 
     const review = {
       review: _id,
+      title,
       message,
+      email,
+      name,
     };
 
     fetch("http://localhost:5000/review", {
@@ -39,10 +44,9 @@ const Review = () => {
 
   return (
     <div style={styles.container}>
-      <h2> {title} </h2>
+      <h2 className="text-2xl font-bold"> {title} </h2>
       <form onSubmit={handleClick}>
         <div>
-          {" "}
           <textarea
             placeholder="What's your experience?"
             name="message"
@@ -53,7 +57,15 @@ const Review = () => {
         <div>
           <input
             type="text"
-            name=""
+            className="input input-primary my-4"
+            name="title"
+            id=""
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="name"
             className="input input-primary"
             defaultValue={user?.displayName}
             id=""
