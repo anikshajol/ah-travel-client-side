@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../Hook/useTitle";
 import Review from "./Review";
 
 const Details = () => {
   const { title, details, img, tourist_places } = useLoaderData();
   const { user } = useContext(AuthContext);
+  useTitle("Package Details");
 
   return (
     <div className="container mx-auto flex justify-center flex-col md:flex-row gap-12">

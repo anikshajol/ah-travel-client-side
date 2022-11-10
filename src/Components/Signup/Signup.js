@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 import swal from "sweetalert";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../Hook/useTitle";
 
 const Signup = () => {
   const { createUser, updateName, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle("Register");
 
   const handleGoogleSignIn = () => {
     googleSignIn()

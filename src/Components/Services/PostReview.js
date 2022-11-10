@@ -8,7 +8,7 @@ const PostReview = () => {
   console.log(review);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review?_id=${user?._id}`)
+    fetch(`https://ah-travels-server-site.vercel.app/review?_id=${user?._id}`)
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, [user?._id]);

@@ -33,13 +33,17 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://ah-travels-server-site.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/review/:id",
         element: <Review></Review>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://ah-travels-server-site.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/reviews",

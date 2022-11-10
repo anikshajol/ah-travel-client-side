@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div>
       <section className="banner-section">
-        <img src={banner} alt="" />
+        <img src={banner} alt="" className=" w-full " />
       </section>
     </div>
   );

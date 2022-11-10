@@ -1,19 +1,23 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import swal from "sweetalert";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../Hook/useTitle";
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  useTitle("Login");
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
