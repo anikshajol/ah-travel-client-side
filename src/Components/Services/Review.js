@@ -1,27 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import swal from "sweetalert";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Review = () => {
-  const [currentValue, setCurrentValue] = useState("");
-  const { title, details, img, _id } = useLoaderData();
+  const { title, _id } = useLoaderData();
   const { user } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
     const form = e.target;
     const message = form.message.value;
-    const email = form.email.value;
-    console.log(message);
+    const email = user?.email || "Unregistered";
+    console.log(message, email);
 
     const review = {
-      service: _id,
-      service_name: title,
-      customer: email,
+      review: _id,
       message,
     };
 
-    fetch(`http://localhost:5000/review`, {
+    fetch("http://localhost:5000/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,23 +27,49 @@ const Review = () => {
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          swal("Thanks For Your Review!");
+          form.reset();
+        }
+      })
       .catch((err) => console.error(err));
   };
 
   return (
     <div style={styles.container}>
-      <h2> React Ratings </h2>
+      <h2> {title} </h2>
       <form onSubmit={handleClick}>
-        <textarea
-          placeholder="What's your experience?"
-          name="message"
-          style={styles.textarea}
-        />
+        <div>
+          {" "}
+          <textarea
+            placeholder="What's your experience?"
+            name="message"
+            className="input input-primary bg-slate-200"
+            style={styles.textarea}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name=""
+            className="input input-primary"
+            defaultValue={user?.displayName}
+            id=""
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            className="input input-primary my-4"
+            name="email"
+            defaultValue={user?.email}
+            id=""
+          />
+        </div>
 
-        <input type="email" name="email" defaultValue={user?.email} id="" />
-
-        <button className="btn btn-ghost">Submit</button>
+        <button className="btn btn-primary">Add Review</button>
       </form>
     </div>
   );

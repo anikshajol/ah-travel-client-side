@@ -1,9 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Review from "./Review";
 
 const Details = () => {
-  const { title, details, img, tourist_places } = useLoaderData();
+  const { title, details, img, tourist_places, _id } = useLoaderData();
 
   return (
     <div className="container mx-auto flex gap-12">
@@ -29,7 +29,7 @@ const Details = () => {
         </div>
       </div>
 
-      <section className="review">
+      <section className="review ">
         <Review></Review>
       </section>
     </div>
