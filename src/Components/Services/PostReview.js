@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { UserIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const PostReview = () => {
@@ -8,18 +8,22 @@ const PostReview = () => {
   console.log(review);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/review?_id=${user._id}`)
+    fetch(`http://localhost:5000/review?_id=${user?._id}`)
       .then((res) => res.json())
       .then((data) => setReview(data));
-  }, []);
+  }, [user?._id]);
   return (
     <div className=" shadow-lg mt-10 mb-4 py-2">
       <div className="card card-side bg-base-100 shadow-xl">
-        <img
-          src={user?.photoURL}
-          className="mr-4 rounded-full"
-          alt="providePhoto"
-        />
+        {user?.photoURL ? (
+          <img
+            src={user?.photoURL}
+            className="mr-4 rounded-full"
+            alt="providePhoto"
+          />
+        ) : (
+          <UserIcon className="w-24"></UserIcon>
+        )}
 
         <div className="flex">
           {review.map((rev) => (

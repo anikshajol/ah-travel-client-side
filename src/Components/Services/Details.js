@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-import PostReview from "./PostReview";
 import Review from "./Review";
 
 const Details = () => {

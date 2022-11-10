@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PostReview from "./PostReview";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const ServicesCard = ({ service }) => {
   const { img, price, placeName, details, _id } = service;
@@ -8,8 +9,12 @@ const ServicesCard = ({ service }) => {
   return (
     <section className="">
       <div className="card bg-base-100 shadow-xl">
-        <figure>
-          <img src={img} alt="place" />
+        <figure className="cursor-pointer">
+          <PhotoProvider>
+            <PhotoView src={img}>
+              <img src={img} alt="place" className="h-52 w-full" />
+            </PhotoView>
+          </PhotoProvider>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{placeName}</h2>
