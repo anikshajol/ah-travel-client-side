@@ -19,7 +19,7 @@ const Services = () => {
         Packages in Popular Destinations
       </h2>
 
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-3 mx-8">
         {services.map((service) => (
           <ServicesCard key={service._id} service={service}></ServicesCard>
         ))}

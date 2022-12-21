@@ -5,8 +5,8 @@ import "./Banner.css";
 const Banner = () => {
   return (
     <div>
-      <section className="banner-section">
-        <img src={banner} alt="" className=" w-full " />
+      <section className="md:banner-section mx-8 md:mx-0 ">
+        <img src={banner} alt="" className=" w-full rounded-md" />
       </section>
     </div>
   );

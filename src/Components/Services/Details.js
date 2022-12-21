@@ -10,8 +10,8 @@ const Details = () => {
   useTitle("Package Details");
 
   return (
-    <div className="container mx-auto flex justify-center flex-col md:flex-row gap-12">
-      <div className="card w-1/2 bg-base-100 shadow-xl">
+    <div className="container mx-auto  flex justify-center flex-col md:flex-row gap-12">
+      <div className="card w-full md:w-1/2 bg-base-100 shadow-xl">
         <figure>
           <img src={img} alt="Shoes" />
         </figure>
